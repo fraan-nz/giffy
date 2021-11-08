@@ -1,0 +1,26 @@
+.category__title {
+	font-size: 1.5rem;
+}
+.category__list {
+	list-style: none;
+	padding-left: 0;
+}
+.category__link {
+	text-decoration: none;
+	color: var(--purple);
+	font-size: 1.2rem;
+}
+
+@media screen and (min-width: 480px) {
+	.category__title {
+		color: var(--lightPurple);
+		margin-bottom: 1.5em;
+	}
+	.category__link:hover {
+		color: var(--lightPurple);
+	}
+	.category__list > li {
+		margin-bottom: 0.8em;
+		line-height: 15px;
+	}
+}

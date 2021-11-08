@@ -1,0 +1,31 @@
+.searchForm {
+	height: 2em;
+}
+.searchForm__input {
+	height: 100%;
+	width: 20em;
+	border: 1px solid var(--lightPurple);
+	padding-left: 0.5em;
+	color: var(--lightPurple);
+	outline: none;
+}
+.searchForm__button {
+	height: 100%;
+	padding: 0 2em;
+	background-color: var(--lightPurple);
+	border: 1px solid var(--lightPurple);
+	color: var(--white);
+	font-weight: 500;
+	cursor: pointer;
+}
+.searchForm__button:hover {
+	background-color: var(--white);
+	color: var(--lightPurple);
+}
+.home__lastGifs {
+	margin-top: 3em;
+}
+.home__subTitle {
+	color: var(--lightPurple);
+	margin-bottom: 1.5em;
+}

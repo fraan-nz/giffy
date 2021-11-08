@@ -1,0 +1,32 @@
+.gif__container {
+	display: -webkit-box; /* Not needed if autoprefixing */
+	display: -ms-flexbox; /* Not needed if autoprefixing */
+	display: flex;
+	width: auto;
+	gap: 1em;
+}
+.gif__containerColumns {
+	background-clip: padding-box;
+}
+
+.gif {
+	color: var(--white);
+	position: relative;
+}
+
+.gif__img {
+	width: 100%;
+	object-fit: contain;
+	display: block;
+	margin-bottom: 1em;
+}
+
+.gif__title {
+	padding: 0 1em;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	font-weight: 400;
+	color: var(--purple);
+	background-color: var(--ghostWhite);
+}

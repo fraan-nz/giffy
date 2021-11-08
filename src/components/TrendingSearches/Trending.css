@@ -1,0 +1,8 @@
+.trending {
+	margin-top: 3em;
+}
+@media screen and (min-width: 480px) {
+	.trending {
+		margin-left: 3em;
+	}
+}
