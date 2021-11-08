@@ -7,9 +7,9 @@ import LazyTrending from "../../components/TrendingSearches";
 
 export default function Home() {
 	const [keyword, setKeyword] = useState("");
-	const [path, setPatch] = useLocation();
+	const [setPatch] = useLocation();
 	//hook de wouter que guarda la ruta y una funcion para modificarla
-	const { loading, gifs } = useGifs();
+	const { gifs } = useGifs();
 
 	const handleChange = (event) => {
 		setKeyword(event.target.value);

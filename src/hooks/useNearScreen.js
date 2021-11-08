@@ -1,15 +1,26 @@
 import { useRef, useState, useEffect } from "react";
 
-export default function useNearScreen({ distance = "100px" } = {}) {
+export default function useNearScreen({
+	distance = "100px",
+	externalRef,
+	once = true,
+} = {}) {
 	const [isNearScreen, setShow] = useState(false);
 	const elementRef = useRef();
 
-	useEffect(function () {
+	useEffect(() => {
+		//externalRef se utiliza en caso de un renderizado condicional
+		const elementToObserve = externalRef
+			? externalRef.current
+			: elementRef.current;
+
 		const onChange = (entries, observer) => {
 			const element = entries[0];
 			if (element.isIntersecting) {
 				setShow(true);
-				observer.disconnect();
+				once && observer.disconnect();
+			} else {
+				!once && setShow(false);
 			}
 		};
 		//el callback onChange recibe como parametro las entries del oberver
@@ -18,9 +29,9 @@ export default function useNearScreen({ distance = "100px" } = {}) {
 			rootMargin: distance,
 		});
 
-		observer.observe(elementRef.current);
+		if (elementToObserve) observer.observe(elementToObserve);
 
-		return () => observer.disconnect();
+		return () => observer && observer.disconnect();
 	});
 
 	return { isNearScreen, elementRef };
