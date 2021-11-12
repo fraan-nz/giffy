@@ -1,13 +1,32 @@
 import React from "react";
 import Gif from "../../components/Gif/Gif";
-import { useGifs } from "../../hooks/useGifs";
+import useSingleGif from "../../hooks/useSingleGif";
+import Spinner from "../../components/Spinner/Spinner";
+import { Redirect } from "wouter";
+import { Helmet } from "react-helmet";
 
 export default function Detail({ params }) {
-	const { gifs } = useGifs();
-	const gif = gifs.find((gif) => gif.id === params.id);
-	return <Gif {...gif} />;
-}
+	const { gif, isLoading, isError } = useSingleGif({ id: params.id });
+	const title = gif ? gif.title : "";
 
-//recibo la lista de gifs ustilizando el hook creado
-//uso el método find comparando la id de la url con las del array gifs
-//retorno el componente Gif con los atributos {title,id,url} de la busqueda
+	if (isLoading)
+		return (
+			<>
+				<Helmet>
+					<title>Cargando...</title>
+				</Helmet>
+				<Spinner />
+			</>
+		);
+	if (isError) return <Redirect to="/404" />;
+	if (!gif) return null;
+
+	return (
+		<>
+			<Helmet>
+				<title>{title} | Tinphy</title>
+			</Helmet>
+			<Gif {...gif} />
+		</>
+	);
+}

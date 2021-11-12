@@ -10,7 +10,7 @@ function App() {
 	return (
 		<div className="app">
 			<Link to="/">
-				<h1 className="app__logo">GIFFY</h1>
+				<h1 className="app__logo">Tinphy</h1>
 			</Link>
 			<section className="app__container">
 				<GifsContextProvider>

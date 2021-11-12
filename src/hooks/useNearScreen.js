@@ -9,6 +9,7 @@ export default function useNearScreen({
 	const elementRef = useRef();
 
 	useEffect(() => {
+		let observer;
 		//externalRef se utiliza en caso de un renderizado condicional
 		const elementToObserve = externalRef
 			? externalRef.current
@@ -23,13 +24,21 @@ export default function useNearScreen({
 				!once && setShow(false);
 			}
 		};
-		//el callback onChange recibe como parametro las entries del oberver
+		//onChange recibe como parametro las entries del oberver
 
-		const observer = new IntersectionObserver(onChange, {
-			rootMargin: distance,
+		//envuelvo el valor en un promise.resolve porque necesito que se resuelva si o si
+		Promise.resolve(
+			//descargo el polyfill solo si es necesario
+			typeof IntersectionObserver !== undefined
+				? IntersectionObserver
+				: import("intersection-observer")
+		).then(() => {
+			observer = new IntersectionObserver(onChange, {
+				rootMargin: distance,
+			});
+
+			if (elementToObserve) observer.observe(elementToObserve);
 		});
-
-		if (elementToObserve) observer.observe(elementToObserve);
 
 		return () => observer && observer.disconnect();
 	});

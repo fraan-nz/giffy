@@ -5,6 +5,7 @@ import { useGifs } from "../../hooks/useGifs";
 import useNearScreen from "../../hooks/useNearScreen";
 import debounce from "just-debounce-it";
 import "./Search.css";
+import { Helmet } from "react-helmet";
 
 export default function SearchResults({ params }) {
 	const { keyword } = params; //params es un objeto que recupera el path de la url :keyword
@@ -14,6 +15,7 @@ export default function SearchResults({ params }) {
 		externalRef: loading ? null : externalRef,
 		once: false,
 	}); //me aseguro de que pase el externalRef cuando haya terminado de cargar
+	const title = gifs ? keyword : "Cargando...";
 
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const debounceHandleNextPage = useCallback(
@@ -31,6 +33,10 @@ export default function SearchResults({ params }) {
 				<Spinner />
 			) : (
 				<>
+					<Helmet>
+						<title>{title} | Tinphy</title>
+						<meta name="description" content={title}></meta>
+					</Helmet>
 					<h3 className="search__title">{decodeURI(keyword)}</h3>
 					<ListOfGifs gifs={gifs} />
 					<div id="visor" ref={externalRef}></div>
