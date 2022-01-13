@@ -2,10 +2,6 @@ import { useState, useEffect, useContext } from "react";
 import getGifs from "../services/getGifs";
 import GifsContext from "../context/GifsContext";
 
-//hook que usa getGifs para hacer la petición en la api
-//se mofica el estado del contexto con los nuevos gifs
-//retorna la lista de gifs y el estado loading para el spinner
-
 const INITIAL_PAGE = 0;
 
 export function useGifs({ keyword, rating } = { keyword: null }) {
@@ -35,4 +31,3 @@ export function useGifs({ keyword, rating } = { keyword: null }) {
 
 	return { loading, loadingNextPage, gifs, setPage };
 }
-//gifs contiene [{id,title,url}]

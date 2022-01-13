@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState, useCallback } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../context/UserContext";
 import {
 	getAuth,
@@ -9,19 +9,7 @@ import {
 	signInWithRedirect,
 	GoogleAuthProvider,
 } from "firebase/auth";
-import {
-	getFirestore,
-	collection,
-	getDocs,
-	where,
-	query,
-	doc,
-	setDoc,
-	getDoc,
-	addDoc,
-	updateDoc,
-	deleteDoc,
-} from "firebase/firestore";
+import { getFirestore, doc, setDoc, deleteDoc } from "firebase/firestore";
 import { firebaseApp } from "../firebase/credentials";
 
 const auth = getAuth(firebaseApp);
@@ -29,7 +17,7 @@ const db = getFirestore(firebaseApp);
 const googleProvider = new GoogleAuthProvider();
 
 export default function useUser() {
-	const { user, setUser, showModal, setShowModal, favs, setFavs } =
+	const { user, setUser, showModal, setShowModal, favs, setFavs, favLoading } =
 		useContext(UserContext);
 	const [error, setError] = useState("");
 
@@ -37,7 +25,8 @@ export default function useUser() {
 	useEffect(() => {
 		onAuthStateChanged(auth, (currentUser) => {
 			if (currentUser) {
-				setUser(currentUser);
+				const uid = currentUser.uid;
+				setUser(uid);
 			} else {
 				setUser(null);
 			}
@@ -71,21 +60,12 @@ export default function useUser() {
 	};
 
 	//Db Services
-	const getData = async () => {
-		const dbData = await getDocs(collection(db, "favs"));
-		let arrayFavs = [];
-		dbData.forEach((doc) => {
-			const gifData = { id: doc.id, ...doc.data() };
-			arrayFavs.push(gifData);
-		});
-		setFavs(arrayFavs);
-	};
 
 	const addFav = async ({ title, id, url }) => {
-		await setDoc(doc(db, "favs", id), { title, url });
+		await setDoc(doc(db, user, id), { title, url });
 	};
 	const removeFav = async (id) => {
-		await deleteDoc(doc(db, "favs", id));
+		await deleteDoc(doc(db, user, id));
 	};
 
 	return {
@@ -101,6 +81,7 @@ export default function useUser() {
 		favs,
 		addFav,
 		removeFav,
-		getData,
+		setFavs,
+		favLoading,
 	};
 }

@@ -5,7 +5,6 @@ import SearchForm from "../../components/SearchForm/SearchForm";
 import { useGifs } from "../../hooks/useGifs";
 import useNearScreen from "../../hooks/useNearScreen";
 import debounce from "just-debounce-it";
-import "./Search.css";
 import { Helmet } from "react-helmet";
 
 export default function SearchResults({ params }) {
@@ -35,13 +34,15 @@ export default function SearchResults({ params }) {
 			) : (
 				<>
 					<Helmet>
-						<title>{title} | Tinphy</title>
+						<title>{decodeURI(title)} | Tinphy</title>
 						<meta name="description" content={title}></meta>
 					</Helmet>
 					<SearchForm initialKeyword={keyword} initialRating={rating} />
-					<h3 className="search__title">{decodeURI(keyword)}</h3>
-					<ListOfGifs gifs={gifs} />
-					<div id="visor" ref={externalRef}></div>
+					<div className="gifs__container">
+						<h2 className="subTitle">{decodeURI(keyword)}</h2>
+						<ListOfGifs gifs={gifs} />
+						<div id="visor" ref={externalRef}></div>
+					</div>
 				</>
 			)}
 		</>

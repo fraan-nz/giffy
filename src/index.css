@@ -17,13 +17,3 @@
 body {
 	font-family: "Source Code Pro", monospace;
 }
-
-.home__container {
-	display: flex;
-	flex-direction: column;
-}
-@media screen and (min-width: 480px) {
-	.home__container {
-		flex-direction: row;
-	}
-}

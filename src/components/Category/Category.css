@@ -1,5 +1,5 @@
-.category__title {
-	font-size: 1.5rem;
+.category {
+	margin-bottom: 0.5em;
 }
 .category__list {
 	list-style: none;
@@ -10,17 +10,16 @@
 	color: var(--purple);
 	font-size: 1.2rem;
 }
+.category__link:hover {
+	color: var(--lightPurple);
+}
 
-@media screen and (min-width: 480px) {
-	.category__title {
-		color: var(--lightPurple);
-		margin-bottom: 1.5em;
-	}
-	.category__link:hover {
-		color: var(--lightPurple);
-	}
+@media screen and (min-width: 675px) {
 	.category__list > li {
 		margin-bottom: 0.8em;
 		line-height: 15px;
+	}
+	.category {
+		margin-bottom: 1.5em;
 	}
 }

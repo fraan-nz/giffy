@@ -1,9 +1,10 @@
 .header {
 	width: 100%;
-	padding-inline: 5%;
+	padding-inline: 1.5em;
 	padding-block: 10px;
 	display: flex;
 	justify-content: flex-end;
+	gap: 30px;
 }
 
 .header__btn {
@@ -21,4 +22,12 @@
 	background-color: var(--purpleHover);
 	border-color: var(--purpleHover);
 	color: var(--white);
+}
+
+.header__favs {
+	font-size: 2rem;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	color: var(--purple);
 }

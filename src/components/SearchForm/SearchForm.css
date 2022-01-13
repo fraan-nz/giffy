@@ -1,0 +1,38 @@
+.searchForm {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 2em;
+	width: 100%;
+	max-width: 500px;
+}
+.searchForm__input {
+	height: 100%;
+	width: 60%;
+	border: 1px solid var(--lightPurple);
+	padding-left: 0.5em;
+	color: var(--lightPurple);
+	outline: none;
+}
+.rating {
+	width: 5.3em;
+	font-weight: 800;
+	padding-bottom: 3px;
+	padding-left: 1px;
+	cursor: pointer;
+}
+
+.searchForm__button {
+	height: 100%;
+	width: 6em;
+	background-color: var(--lightPurple);
+	border: 1px solid var(--lightPurple);
+	color: var(--white);
+	font-weight: 500;
+	cursor: pointer;
+}
+.searchForm__button:hover {
+	background-color: var(--lightPurpleHover);
+	color: var(--white);
+	border-color: var(--lightPurpleHover);
+}

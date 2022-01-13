@@ -1,6 +1,6 @@
 .gif__container {
-	display: -webkit-box; /* Not needed if autoprefixing */
-	display: -ms-flexbox; /* Not needed if autoprefixing */
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
 	width: auto;
 	gap: 1em;
@@ -31,11 +31,16 @@
 	background-color: var(--ghostWhite);
 }
 
-.favButton {
+.gif__buttons {
+	display: flex;
+	gap: 5px;
 	position: absolute;
 	right: 5px;
 	top: 5px;
 	z-index: 1;
+}
+
+.gif__button {
 	cursor: pointer;
 	border: none;
 	background-color: var(--white);
@@ -47,7 +52,7 @@
 	border-radius: 50%;
 }
 
-.favButton:hover {
+.gif__button:hover {
 	background-color: var(--lightPurple);
 }
 
@@ -55,5 +60,5 @@
 	font-size: 1.2rem;
 	color: var(--darkPurple);
 	display: flex;
-	margin-left: 0.5px;
+	margin-left: 0;
 }

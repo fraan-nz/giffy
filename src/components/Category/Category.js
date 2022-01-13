@@ -5,7 +5,7 @@ import "./Category.css";
 export default function Category({ name, options = [] }) {
 	return (
 		<>
-			<h3 className="category__title">{name}</h3>
+			<h2 className="subTitle category">{name}</h2>
 			<ul className="category__list">
 				{options.map((option) => (
 					<li key={option}>

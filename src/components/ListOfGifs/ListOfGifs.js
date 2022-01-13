@@ -1,19 +1,12 @@
-import React, { useEffect } from "react";
-import useUser from "../../hooks/useUser";
+import React from "react";
 import Gif from "../Gif/Gif";
 import Masonry from "react-masonry-css";
 
 export default function ListOfGifs({ gifs }) {
-	const { getData } = useUser();
-
-	useEffect(() => {
-		getData();
-	}, [getData]);
-
 	const breakpointColumnsObj = {
 		default: 4,
-		1100: 3,
-		975: 2,
+		1495: 3,
+		1285: 2,
 		765: 1,
 	};
 

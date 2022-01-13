@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import useUser from "../../hooks/useUser";
 import ModalPortal from "../Modal/Modal";
 import Login from "../Login/Login";
+import { FaHeart } from "react-icons/fa";
 import "./Header.css";
 
 export default function Header() {
 	const { isLogged, logout, showModal, setShowModal } = useUser();
-	const [location, setLocation] = useLocation();
+	const [, setLocation] = useLocation();
 
 	const handleShowModal = () => {
 		if (!isLogged) return setShowModal(true);
@@ -28,6 +29,10 @@ export default function Header() {
 
 	return (
 		<header className="header">
+			<Link to="/favorites">
+				<FaHeart className="header__favs" title="Favoritos" />
+			</Link>
+
 			{isLogged ? (
 				<button className="header__btn" onClick={handleLogout}>
 					Logout

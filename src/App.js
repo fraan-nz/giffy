@@ -7,6 +7,7 @@ import { UserContextProvider } from "./context/UserContext";
 import Detail from "./pages/Detail";
 import Header from "./components/Header/Header";
 import "./App.css";
+import Favorites from "./pages/Favorites/Favorites";
 
 function App() {
 	return (
@@ -16,13 +17,14 @@ function App() {
 				<Link to="/">
 					<h1 className="app__logo">Tinphy</h1>
 				</Link>
-				<section className="app__container">
+				<main className="app__container">
 					<GifsContextProvider>
 						<Route path="/" component={Home} />
 						<Route path="/search/:keyword/:rating?" component={SearchResults} />
 						<Route path="/gif/:id" component={Detail} />
+						<Route path="/favorites" component={Favorites} />
 					</GifsContextProvider>
-				</section>
+				</main>
 			</div>
 		</UserContextProvider>
 	);

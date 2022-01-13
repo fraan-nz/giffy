@@ -25,7 +25,7 @@ export default function Detail({ params }) {
 	return (
 		<>
 			<Helmet>
-				<title>{title} | Tinphy</title>
+				<title>{decodeURI(title)} | Tinphy</title>
 			</Helmet>
 			<Gif {...gif} />
 		</>

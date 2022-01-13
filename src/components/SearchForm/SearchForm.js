@@ -1,5 +1,6 @@
 import React, { useReducer } from "react";
 import { useLocation } from "wouter";
+import "./SearchForm.css";
 
 const RATINGS = ["g", "pg", "pg-13", "r"];
 const ACTIONS = {
@@ -8,9 +9,7 @@ const ACTIONS = {
 };
 
 function SearchForm({ initialKeyword = "", initialRating = "" }) {
-	//const [keyword, setKeyword] = useState(decodeURIComponent(initialKeyword));
-	//const [rating, setRating] = useState(initialRating);
-	const [patch, setPatch] = useLocation();
+	const [, setPatch] = useLocation();
 
 	const reducer = (state, accion) => {
 		switch (accion.type) {
@@ -52,19 +51,29 @@ function SearchForm({ initialKeyword = "", initialRating = "" }) {
 
 	return (
 		<form onSubmit={handleSubmit} className="searchForm">
-			<input
-				onChange={handleChange}
-				type="text"
-				value={keyword}
-				placeholder="Search a gif.."
-				className="searchForm__input"
-			/>
-			<input type="submit" value="Buscar" className="searchForm__button" />
-			<select value={rating} onChange={handleChangeRating}>
+			<select
+				value={rating}
+				onChange={handleChangeRating}
+				className="searchForm__input rating"
+				title="Clasificación"
+			>
 				{RATINGS.map((rating) => (
 					<option key={rating}>{rating}</option>
 				))}
 			</select>
+			<input
+				onChange={handleChange}
+				type="text"
+				value={keyword}
+				placeholder="Busca un gif.."
+				className="searchForm__input"
+			/>
+			<input
+				type="submit"
+				value="Buscar"
+				className="searchForm__button"
+				title="Buscar"
+			/>
 		</form>
 	);
 }

@@ -9,7 +9,11 @@ export default function Favs({ id, url, title }) {
 
 	const handleClick = () => {
 		if (isLogged) {
-			isInFavs ? removeFav(id) : addFav({ title, id, url });
+			if (isInFavs) {
+				removeFav(id).catch((err) => console.log(err));
+			} else {
+				addFav({ title, id, url }).catch((err) => console.log(err));
+			}
 		} else {
 			setShowModal(true);
 		}
@@ -20,7 +24,7 @@ export default function Favs({ id, url, title }) {
 		: ["agregar gif", <FaHeart />];
 
 	return (
-		<button onClick={handleClick} className="favButton">
+		<button onClick={handleClick} className="gif__button" key={id}>
 			<span aria-label={label} role="img" className="icon">
 				{icon}
 			</span>
