@@ -24,11 +24,9 @@ export default function useNearScreen({
 				!once && setShow(false);
 			}
 		};
-		//onChange recibe como parametro las entries del oberver
 
 		//envuelvo el valor en un promise.resolve porque necesito que se resuelva si o si
 		Promise.resolve(
-			//descargo el polyfill solo si es necesario
 			typeof IntersectionObserver !== undefined
 				? IntersectionObserver
 				: import("intersection-observer")

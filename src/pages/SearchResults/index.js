@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useCallback } from "react";
 import Spinner from "../../components/Spinner/Spinner";
 import ListOfGifs from "../../components/ListOfGifs/ListOfGifs";
+import SearchForm from "../../components/SearchForm/SearchForm";
 import { useGifs } from "../../hooks/useGifs";
 import useNearScreen from "../../hooks/useNearScreen";
 import debounce from "just-debounce-it";
@@ -8,8 +9,8 @@ import "./Search.css";
 import { Helmet } from "react-helmet";
 
 export default function SearchResults({ params }) {
-	const { keyword } = params; //params es un objeto que recupera el path de la url :keyword
-	const { loading, gifs, setPage } = useGifs({ keyword });
+	const { keyword, rating = "g" } = params;
+	const { loading, gifs, setPage } = useGifs({ keyword, rating });
 	const externalRef = useRef();
 	const { isNearScreen } = useNearScreen({
 		externalRef: loading ? null : externalRef,
@@ -37,6 +38,7 @@ export default function SearchResults({ params }) {
 						<title>{title} | Tinphy</title>
 						<meta name="description" content={title}></meta>
 					</Helmet>
+					<SearchForm initialKeyword={keyword} initialRating={rating} />
 					<h3 className="search__title">{decodeURI(keyword)}</h3>
 					<ListOfGifs gifs={gifs} />
 					<div id="visor" ref={externalRef}></div>

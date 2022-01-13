@@ -1,0 +1,36 @@
+.modal {
+	position: fixed;
+	bottom: 0;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	backdrop-filter: blur(5px);
+	z-index: 100;
+}
+.modal__content {
+	width: 100%;
+	max-width: 300px;
+	padding: 1em;
+	background-color: var(--darkPurple);
+	display: flex;
+	justify-content: center;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+.modal__close {
+	position: absolute;
+	font-weight: 700;
+	top: 0;
+	right: 0;
+	background-color: transparent;
+	color: var(--lightPurple);
+	border: none;
+	cursor: pointer;
+	padding: 0.2em 0.6em;
+}
+.modal__close:hover {
+	color: var(--lightPurple);
+}

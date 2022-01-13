@@ -3,8 +3,10 @@
 	--white: rgb(240, 239, 244);
 	--ghostWhite: rgba(240, 239, 244, 0.7);
 	--purple: rgb(131, 33, 97);
+	--purpleHover: rgba(131, 33, 97, 0.3);
 	--darkPurple: rgb(61, 38, 69);
 	--lightPurple: rgb(218, 65, 103);
+	--lightPurpleHover: rgba(218, 65, 103, 0.7);
 }
 
 * {

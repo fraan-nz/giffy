@@ -19,8 +19,9 @@
 	cursor: pointer;
 }
 .searchForm__button:hover {
-	background-color: var(--white);
-	color: var(--lightPurple);
+	background-color: var(--lightPurpleHover);
+	color: var(--white);
+	border-color: var(--lightPurpleHover);
 }
 .home__lastGifs {
 	margin-top: 3em;

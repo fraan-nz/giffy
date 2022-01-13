@@ -30,3 +30,30 @@
 	color: var(--purple);
 	background-color: var(--ghostWhite);
 }
+
+.favButton {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+	z-index: 1;
+	cursor: pointer;
+	border: none;
+	background-color: var(--white);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 30px;
+	width: 30px;
+	border-radius: 50%;
+}
+
+.favButton:hover {
+	background-color: var(--lightPurple);
+}
+
+.icon {
+	font-size: 1.2rem;
+	color: var(--darkPurple);
+	display: flex;
+	margin-left: 0.5px;
+}

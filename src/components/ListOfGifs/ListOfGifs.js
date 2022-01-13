@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import useUser from "../../hooks/useUser";
 import Gif from "../Gif/Gif";
 import Masonry from "react-masonry-css";
 
 export default function ListOfGifs({ gifs }) {
+	const { getData } = useUser();
+
+	useEffect(() => {
+		getData();
+	}, [getData]);
+
 	const breakpointColumnsObj = {
 		default: 4,
 		1100: 3,
@@ -11,19 +18,21 @@ export default function ListOfGifs({ gifs }) {
 	};
 
 	return (
-		<Masonry
-			breakpointCols={breakpointColumnsObj}
-			className="gif__container"
-			columnClassName=".gif__containerColumns"
-		>
-			{gifs.map((singleGif) => (
-				<Gif
-					key={singleGif.id}
-					title={singleGif.title}
-					id={singleGif.id}
-					url={singleGif.url}
-				/>
-			))}
-		</Masonry>
+		<>
+			<Masonry
+				breakpointCols={breakpointColumnsObj}
+				className="gif__container"
+				columnClassName=".gif__containerColumns"
+			>
+				{gifs.map((singleGif) => (
+					<Gif
+						key={singleGif.id}
+						title={singleGif.title}
+						url={singleGif.url}
+						id={singleGif.id}
+					/>
+				))}
+			</Masonry>
+		</>
 	);
 }

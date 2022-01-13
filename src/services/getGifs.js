@@ -1,11 +1,15 @@
-import { API_KEY, API_URL } from "./settings";
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_URL = process.env.REACT_APP_API_URL;
 
-//fetch a la api con la keyword que recibe desde useGifs
-//desestructuro para guardar el atributo data de la respuesta
-export default function getGifs({ keyword, page = 0, limit = 10 } = {}) {
+export default function getGifs({
+	keyword,
+	page = 0,
+	limit = 10,
+	rating = "g",
+} = {}) {
 	const apiURL = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
 		page * limit
-	}&rating=g&lang=en`;
+	}&rating=${rating}&lang=en`;
 	return fetch(apiURL)
 		.then((res) => res.json())
 		.then((response) => {
@@ -20,4 +24,3 @@ export default function getGifs({ keyword, page = 0, limit = 10 } = {}) {
 			}
 		});
 }
-//desestructuro data para guardar en gifs solamente { title, id, url }
