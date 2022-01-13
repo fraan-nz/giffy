@@ -11,29 +11,6 @@ export function UserContextProvider({ children }) {
 	const [favLoading, setFavLoading] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 
-	// useEffect(() => {
-	// 	let mounted = true;
-	// 	setFavLoading(true);
-	// 	if (!user) return setFavs([]);
-	// 	const getFavs = async () => {
-	// 		if (mounted) {
-	// 			const dbData = await collection(db, user);
-	// 			onSnapshot(dbData, (snapshot) => {
-	// 				let arrayFavs = [];
-	// 				snapshot.forEach((doc) => {
-	// 					const gifData = { id: doc.id, ...doc.data() };
-	// 					arrayFavs.push(gifData);
-	// 				});
-	// 				setFavs(arrayFavs);
-	// 				setFavLoading(false);
-	// 			});
-	// 		}
-	// 	};
-	// 	getFavs();
-
-	// 	return () => (mounted = false);
-	// }, [user]);
-
 	useEffect(() => {
 		setFavLoading(true);
 		if (!user) return setFavs([]);

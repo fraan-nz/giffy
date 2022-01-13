@@ -36,12 +36,10 @@ function SearchForm({ initialKeyword = "", initialRating = "" }) {
 
 	const handleChange = (event) => {
 		dispatch({ type: ACTIONS.UPDATE_KEYWORD, payload: event.target.value });
-		//setKeyword(event.target.value);
 	};
 
 	const handleChangeRating = (event) => {
 		dispatch({ type: ACTIONS.UPDATE_RATING, payload: event.target.value });
-		//setRating(event.target.value);
 	};
 
 	const handleSubmit = (event) => {

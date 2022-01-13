@@ -22,15 +22,14 @@
 }
 .modal__close {
 	position: absolute;
-	font-weight: 700;
-	top: 0;
-	right: 0;
+	font-size: 1.5rem;
+	top: -2px;
+	right: -5px;
 	background-color: transparent;
 	color: var(--lightPurple);
 	border: none;
 	cursor: pointer;
-	padding: 0.2em 0.6em;
 }
 .modal__close:hover {
-	color: var(--lightPurple);
+	color: var(--lightPurpleHover);
 }

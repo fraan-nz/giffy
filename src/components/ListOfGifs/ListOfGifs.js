@@ -19,7 +19,7 @@ export default function ListOfGifs({ gifs }) {
 			>
 				{gifs.map((singleGif) => (
 					<Gif
-						key={singleGif.id}
+						key={singleGif.url}
 						title={singleGif.title}
 						url={singleGif.url}
 						id={singleGif.id}

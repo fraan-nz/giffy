@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { FaWindowClose } from "react-icons/fa";
 import "./Modal.css";
 
 function Modal({ children, onClose }) {
@@ -7,7 +8,7 @@ function Modal({ children, onClose }) {
 		<div className="modal">
 			<div className="modal__content">
 				<button className="modal__close" onClick={onClose}>
-					X
+					<FaWindowClose />
 				</button>
 				{children}
 			</div>
